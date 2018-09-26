@@ -22,13 +22,13 @@ npm install | yarn install
 
 ## Development
 
-Sample files are included in `src`. As well as one es6 import module. These files are meant to be replaced. The only constraint is that there must be a `src/js/index.js` file. Place all other files  inside `src`.
+Sample files are included in `src`. As well as one es6 import module. These files are meant to be replaced. The only one that must remain is `src/js/index.js` file. Place all other files  inside `src`.
 
 `npm start | yarn start` to start the dev-server and view site at: `http://localhost:8080`. As files are edited in `src` the browser will update.
 
 ## Build
 
-`npm run build` to create a production build of the site in `dist` directory at project root.
+`npm run build` to create a production build of the site in the `dist` folder.
 
 ## Deployment
 For easy deployment of static sites I like to use [Surge](https://surge.sh/). After building run ` npm install --global surge` then `cd dist` and run the command `surge`. They will generate a link for you and upload all your files. Learn more in their [help docs](https://surge.sh/help/).
@@ -37,7 +37,7 @@ For easy deployment of static sites I like to use [Surge](https://surge.sh/). Af
 
 ## JavaScript, SASS, CSS files
 
-This project uses Webpack. What this means as far as this project is concerned is that all JavaScript, SASS, and CSS files must be imported in `index.js`. Or you may import other SASS or CSS files into main.scss.
+This project uses Webpack. Essentially all JavaScript, SASS, and CSS files must be imported in `index.js`. Or you may import other SASS or CSS files into main.scss.
 
 
 
