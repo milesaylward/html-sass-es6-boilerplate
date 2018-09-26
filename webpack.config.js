@@ -7,15 +7,13 @@ const env = process.env.NODE_ENV || 'development';
 const isDev = env === 'development';
 
 module.exports = {
-  entry: {
-    bundle: './src/js/index.js'
-  },
+  entry: './src/js/index.js',
+  mode: env,
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   plugins: [
-    new HtmlWebpackPlugin(),
     new CopyWebpackPlugin([
       { from: 'src/index.html', to: './index.html' },
       { from: 'src/assets', to: './assets' }
@@ -45,3 +43,22 @@ module.exports = {
      ]
   }
 };
+
+if (process.env.NODE_ENV !== 'production') {
+    module.exports.plugins = (module.exports.plugins || []).concat([
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
+        })
+    ])
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.devtool = '#source-map'
+  module.exports.plugins = (module.exports.plugins || []).concat([
+      new webpack.DefinePlugin({
+          'process.env': {
+              NODE_ENV: '"production"'
+          }
+      }),
+  ])
+}
